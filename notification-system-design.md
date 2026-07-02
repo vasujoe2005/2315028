@@ -194,3 +194,13 @@ adding indexes will be effective for faster retival but for large datasets it wi
 query to find all stds who got a placement notification in last 7 days :
 select distinct studentID from notification where notificationType='Placemnt' and createdAt>=now()-interval 7 day;
 
+STAGE 4:
+
+Now every time a student opens the notification page all the notifications are fetched from the database. When thousands of students open the application at the same time the database receives a huge number of requests, making the response slower and giving a poor user experience.
+
+One solution i would recommend is Pagination. Instead of retrieving all the notifications at once, only a small batch (for example 20 notifications) should be loaded. When the user scrolls or goes to the next page, the next set of notifications can be fetched. This reduces the amount of data transferred, decreases database load and improves the response time. 
+
+Another solution is Load Balancing. Instead of sending all user requests to a single application server, a load balancer distributes the requests among multiple servers. This prevents one server from getting overloaded and improves the overall performance of the application.
+
+By using Pagination along with Load Balancing, the notification system can handle a large number of students efficiently while providing faster response times and a better user experience.
+
