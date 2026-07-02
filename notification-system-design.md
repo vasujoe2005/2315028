@@ -204,3 +204,19 @@ another solution i would recommand is load balancing. instead of handling all th
 
 by using pagination along with load balancing the notification system can handle a large number of users efficiently and provide better performance with less response time.
 
+
+
+STAGE 5:
+
+Given a function to notify all students
+
+Mistakes i find is the order of exection we must first update the db so that the data is not lost and then send the meail this will ensure smooth flow without data loss 
+
+What i suggest is that we can change the order then use call queues to load the notifications in a queue adn then send them so that the load is not directly dumped onto the single server
+
+Pseudo Code
+functionfunction notify_all(student_ids:array, message:string):
+    for student_id in student_ids:
+        save_to_db(student_id, message)
+        add_to_email_queue(student_id, message)
+        add_to_push_queue(student_id, message)
