@@ -220,3 +220,12 @@ functionfunction notify_all(student_ids:array, message:string):
         save_to_db(student_id, message)
         add_to_email_queue(student_id, message)
         add_to_push_queue(student_id, message)
+
+
+Stage 6:
+
+Priority Inbox:
+
+placement>result>event
+
+create a priority order to retreive data in this order 

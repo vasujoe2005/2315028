@@ -1,0 +1,28 @@
+{
+  "notifications": [
+    {
+      "ID":"001",
+      "Type":"Event",
+      "Message":"Hackathon on Friday",
+      "Timestamp":"2026-07-02 10:00:00"
+    },
+    {
+      "ID":"002",
+      "Type":"Placement",
+      "Message":"XYZ Placement Drive",
+      "Timestamp":"2026-07-02 09:00:00"
+    },
+    {
+      "ID":"003",
+      "Type":"Result",
+      "Message":"Semester Results Published",
+      "Timestamp":"2026-07-02 12:00:00"
+    },
+    {
+      "ID":"004",
+      "Type":"Placement",
+      "Message":"ABC Placement Drive",
+      "Timestamp":"2026-07-03 09:00:00"
+    }
+  ]
+}
