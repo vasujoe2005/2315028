@@ -196,11 +196,11 @@ select distinct studentID from notification where notificationType='Placemnt' an
 
 STAGE 4:
 
-Now every time a student opens the notification page all the notifications are fetched from the database. When thousands of students open the application at the same time the database receives a huge number of requests, making the response slower and giving a poor user experience.
+Now every time a student opens the notification page all the notifications are fetched from the database. when the number of students increases the database gets a lot of requests at the same time. because of this the response time becomes slower and the user experience will not be good.
 
-One solution i would recommend is Pagination. Instead of retrieving all the notifications at once, only a small batch (for example 20 notifications) should be loaded. When the user scrolls or goes to the next page, the next set of notifications can be fetched. This reduces the amount of data transferred, decreases database load and improves the response time. 
+one solution i would recommand is pagination. instead of retriving all the notifications at once we can retrive only a small batch of notifications like 20 or 30 records. when the user goes to the next page or scrolls down the next set of notifications can be loaded. this reduces the database load, improves the response time and also reduces the amount of data transferred.
 
-Another solution is Load Balancing. Instead of sending all user requests to a single application server, a load balancer distributes the requests among multiple servers. This prevents one server from getting overloaded and improves the overall performance of the application.
+another solution i would recommand is load balancing. instead of handling all the requests by a single server we can use multiple servers and distribute the requests equally among them using a load balancer. this prevents one server from getting overloaded and improves the performance of the application when many students are using it at the same time. 
 
-By using Pagination along with Load Balancing, the notification system can handle a large number of students efficiently while providing faster response times and a better user experience.
+by using pagination along with load balancing the notification system can handle a large number of users efficiently and provide better performance with less response time.
 
