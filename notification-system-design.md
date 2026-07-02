@@ -100,3 +100,76 @@ Response:{
     Notification deleted successfully
 }
 
+
+
+STAGE 2:
+
+Database selection and design:
+
+I choose MongoDB as db for this application because it is flexible schema and it supports json formats and it can manage large number of datas also it is fast for retrival of data as it uses indexes
+
+Schemas:
+Collection name : notifications
+Notification
+{
+    _id: ObjectId,
+    ID: String,
+    Type: String,
+    Message: String,
+    Timestamp: Date
+}
+
+
+GET /notifications
+    Query: db.notifications.find().sort({ Timestamp: -1 }) 
+    here we are displaying the recent ones first by sorting using timestamp in desc order
+
+POST /addNotification
+    Query: db.notifications.insertOne({
+        ID:"003",
+        Type:"Event",
+        Message:"National level Symposium is planned",
+        Timestamp:new Date("2026-06-03T11:30:10")
+    })
+    here instead of using static "" we can get using post command to a variavle and equalise that variable here.that will add the values to the db
+
+GET /:ID
+    Query: db.notifications.find({
+        ID:"001"
+    })
+    this will find the notification with that id from db and will return it
+
+GET /:Type
+    Query: db.notifications.find({
+        Type:"Placements"
+    })
+    this will find the notification with that type from db and will return it
+
+PUT /:ID
+    Query: db.notifications.updateOne(
+        {
+            ID:"003"
+        },
+        {
+            $set:{Message:"Inter-National level Symposium is planned"}
+        }
+    )
+    this will update the message of the notification if we mention type instead of message in the $set we can update the type also
+
+DELETE /:ID
+    Query: db.notifications.deleteOne({
+        ID:"002"
+    })
+    this will the notification with that particular id
+
+Problems that are caused by increased data size:
+    *query processing time will be prolonged
+    *Increase API response time
+    *higher storage requirements
+    *Bottleneck in performance
+
+Remedies:
+    *Pagination: Only retrive a certain number of data at a time to reduce workload ex. using LIMIT=20
+    *Indexing: helps in easy retrival and fast searching of data 
+    *Load Balancing: Split the load according to the availability of the resources to handle traffic
+    *Caching: Cache the frequently used data in a local storage to reduce the load
