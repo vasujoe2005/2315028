@@ -173,3 +173,24 @@ Remedies:
     *Indexing: helps in easy retrival and fast searching of data 
     *Load Balancing: Split the load according to the availability of the resources to handle traffic
     *Caching: Cache the frequently used data in a local storage to reduce the load
+
+
+
+STAGE 3:
+
+Query Optimization:
+
+given that a query in SQL DB is
+    select * from notifications where studentID=1042 and isRead=false order by createdAt asc;
+ 
+yes this query is accurate to retrive the all unread notification of a particular student but it will show the earliest notification forst as it is order by asc of timestamp
+
+When the notification is increased massively this query execution time will be slower as lot of query also if the total students is around 50000 retirving that it self takes time
+
+change that i would recommand is to use pagination to retrive onlt small batch of the related data 
+
+adding indexes will be effective for faster retival but for large datasets it will consume additional storage and only select will be faster dml operations will be slower 
+
+query to find all stds who got a placement notification in last 7 days :
+select distinct studentID from notification where notificationType='Placemnt' and createdAt>=now()-interval 7 day;
+
